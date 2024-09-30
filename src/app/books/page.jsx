@@ -14,7 +14,11 @@ export default function Books() {
     const [authorsLoaded, setAuthorsLoaded] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
 
-    const [getAuthors, { data: authorsData, loading: authorsLoading, error: authorsError }] = useLazyQuery(GET_AUTHORS)
+    const [getAuthors, { data: authorsData, loading: authorsLoading, error: authorsError }] = useLazyQuery(GET_AUTHORS, {
+        variables: {
+            pageSize: 10
+        }
+    })
 
     const { data, loading, error } = useQuery(GET_BOOKS, {
         variables: {
